@@ -1,2 +1,2 @@
-public class Eevee {
+public class Eevee extends Pokemon {
 }

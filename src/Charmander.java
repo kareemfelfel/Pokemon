@@ -1,2 +1,2 @@
-public class Charmander {
+public class Charmander extends Pokemon{
 }
