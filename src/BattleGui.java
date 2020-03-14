@@ -1,4 +1,5 @@
 import javax.swing.*;
 
-public class BattleGui extends JFrame {
+public class BattleGui extends JFrame
+{
 }
