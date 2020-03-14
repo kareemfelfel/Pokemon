@@ -1,4 +1,4 @@
 public interface Weapons
 {
-    void Use();
+    void Use(Pokemon P);
 }

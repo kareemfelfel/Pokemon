@@ -45,9 +45,6 @@ public abstract class Pokemon
         return AttacksList;
     }
 
-    public void setAttacksList(ArrayList<Attacks> attacksList) {
-        AttacksList = attacksList;
-    }
     //abstract method set attacks that sets different attacks for every pokemon
     public abstract void SetAttacks();
 }

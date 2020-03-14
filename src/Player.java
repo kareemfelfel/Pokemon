@@ -10,6 +10,20 @@ public abstract class Player
     protected boolean ItemIsFound;
     protected Weapons Item;
 
+    //Constructor
+    public Player(Pokemon P1, Pokemon P2)
+    {
+        Pokemon1 = P1;
+        Pokemon2 = P2;
+        CurrentPokemon = Pokemon1;
+        AddItemsToArrayList();
+    }
+
+    private void AddItemsToArrayList()
+    {
+
+    }
+
     public void ChoosePokemon(){
 
     }
