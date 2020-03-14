@@ -8,6 +8,7 @@ public class LandingGui extends JFrame
     public LandingGui()
     {
         SetInitialGui();
+        this.setVisible(true);
     }
     public void SetInitialGui()
     {
@@ -22,5 +23,6 @@ public class LandingGui extends JFrame
         title.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         title.setVerticalAlignment((int) CENTER_ALIGNMENT);
         this.add(title, BorderLayout.NORTH);
+        this.setVisible(true);
     }
 }

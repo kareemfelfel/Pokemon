@@ -4,6 +4,7 @@ import java.util.Random;
 public abstract class Player
 {
     //Fields
+    protected String PlayerName;
     protected Pokemon Pokemon1;
     protected Pokemon Pokemon2;
     protected Pokemon CurrentPokemon;
@@ -37,8 +38,9 @@ public abstract class Player
 
 
     //Constructor
-    public Player(Pokemon P1, Pokemon P2)
+    public Player(String Pname, Pokemon P1, Pokemon P2)
     {
+        PlayerName = Pname;
         Pokemon1 = P1;
         Pokemon2 = P2;
         CurrentPokemon = Pokemon1;
