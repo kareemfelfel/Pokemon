@@ -1,2 +1,8 @@
-public class Eevee extends Pokemon {
+public class Eevee extends Pokemon
+{
+    @Override
+    public void SetAttacks()
+    {
+
+    }
 }
