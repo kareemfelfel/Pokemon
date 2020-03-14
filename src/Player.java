@@ -3,12 +3,38 @@ import java.util.Random;
 
 public abstract class Player
 {
+    //Fields
     protected Pokemon Pokemon1;
     protected Pokemon Pokemon2;
     protected Pokemon CurrentPokemon;
     protected ArrayList<Weapons> ItemsList;
     protected boolean ItemIsFound;
-    protected Weapons Item;
+
+    //GETTERS AND SETTERS
+    public Pokemon getPokemon1() {
+        return Pokemon1;
+    }
+
+    public void setPokemon1(Pokemon pokemon1) {
+        Pokemon1 = pokemon1;
+    }
+
+    public Pokemon getPokemon2() {
+        return Pokemon2;
+    }
+
+    public void setPokemon2(Pokemon pokemon2) {
+        Pokemon2 = pokemon2;
+    }
+
+    public Pokemon getCurrentPokemon() {
+        return CurrentPokemon;
+    }
+
+    public void setCurrentPokemon(Pokemon currentPokemon) {
+        CurrentPokemon = currentPokemon;
+    }
+
 
     //Constructor
     public Player(Pokemon P1, Pokemon P2)
@@ -18,7 +44,6 @@ public abstract class Player
         CurrentPokemon = Pokemon1;
         AddItemsToArrayList();
     }
-
     private void AddItemsToArrayList()
     {
 
@@ -46,7 +71,7 @@ public abstract class Player
     public Weapons GetItem()
     {
         Random random = new Random();
-        Item = ItemsList.get(random.nextInt(ItemsList.size()));
+        Weapons Item = ItemsList.get(random.nextInt(ItemsList.size()));
         return Item;
     }
 }
