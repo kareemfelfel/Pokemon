@@ -1,3 +1,4 @@
+package pokemons;
 // Attacks class generates a number of hit point every time the function getHitPoint
 // is called which makes the game feel more real.
 public class Attacks {

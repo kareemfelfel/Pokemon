@@ -1,3 +1,6 @@
+package players;
+import pokemons.*;
+
 public class Computer extends Player
 {
     public Computer(String Pname, Pokemon P1, Pokemon P2) {

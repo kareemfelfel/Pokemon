@@ -1,3 +1,6 @@
+package pokemons;
+import players.*;
+import items.*;
 public class Pikachu extends Pokemon
 {
     public Pikachu()

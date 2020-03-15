@@ -1,3 +1,6 @@
+package players;
+import items.*;
+import pokemons.*;
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,3 +1,4 @@
+package pokemons;
 import java.util.ArrayList;
 
 public abstract class Pokemon
