@@ -2,7 +2,7 @@ package items;
 import pokemons.Pokemon;
 public class DietPepsi implements Weapons
 {
-    private String Name = "Diet Pepsi...";
+    private String Name = "Diet Pepsi Can";
     private int Damage = 10;
     @Override
     public void Use(Pokemon Opponent)

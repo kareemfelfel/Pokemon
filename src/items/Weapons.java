@@ -4,4 +4,5 @@ import pokemons.*;
 public interface Weapons
 {
     void Use(Pokemon P);
+
 }
