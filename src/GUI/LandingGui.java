@@ -91,7 +91,7 @@ public class LandingGui extends JFrame
         //title Image
         ImageIcon imageIcon = new ImageIcon("Pics/pokemon_logo.png");
         Image image = imageIcon.getImage(); // transform it
-        Image newimg = image.getScaledInstance(190, 90,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newimg = image.getScaledInstance(210, 80,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
         JLabel TitleImage = new JLabel(imageIcon);
         //do not allow user to resize
