@@ -1,13 +1,22 @@
 package GUI;
-import pokemons.Pokemon;
+import players.Player;
 import javax.swing.*;
 import java.awt.*;
 
 public class InformationGui extends JFrame
 {
-    private Pokemon Pokemon1;
-    private Pokemon Pokemon2;
+    private Player User;
     private String UserName;
+    private JTextField NameField;
+    private JRadioButton PikachuRadio1;
+    private JRadioButton PikachuRadio2;
+    private JRadioButton EeveeRadio1;
+    private JRadioButton EeveeRadio2;
+    private JRadioButton GengerRadio1;
+    private JRadioButton GengerRadio2;
+    private JRadioButton CharmanderRadio1;
+    private JRadioButton CharmanderRadio2;
+    
     public InformationGui()
     {
 
@@ -16,7 +25,11 @@ public class InformationGui extends JFrame
         CreateUserNameSection();
         CreateFirstSetofRadioButtons();
         CreateSecondSetofRadioButtons();
+        AddActionListeners();
         this.setVisible(true);
+    }
+
+    private void AddActionListeners() {
     }
 
     private void CreateUserNameSection()
@@ -24,7 +37,7 @@ public class InformationGui extends JFrame
         //--------------------INITIALIZE LABEL AND TEXTFIELD-------------
         JLabel NameLbl = new JLabel("Enter your name:");
         NameLbl.setForeground(Color.white);
-        JTextField NameField = new JTextField();
+        NameField = new JTextField();
         //---------------------------------------------------------------
 
         //----------------------SET BOUNDS-------------------------------
@@ -42,13 +55,13 @@ public class InformationGui extends JFrame
     {
         //-----------------SETTING FIRST SET OF RADIOBUTTONS---------------
         // Initialization of PikachuRadioBTn
-        JRadioButton PikachuRadio2 = new JRadioButton();
+        PikachuRadio2 = new JRadioButton();
         // Initialization of object of Charmander Radio Button.
-        JRadioButton CharmanderRadio2 = new JRadioButton();
+        CharmanderRadio2 = new JRadioButton();
         // Initialization of Eevee Radio Button
-        JRadioButton EeveeRadio2 = new JRadioButton();
+        EeveeRadio2 = new JRadioButton();
         //Initialization of Genger RadioButton
-        JRadioButton GengerRadio2 = new JRadioButton();
+        GengerRadio2 = new JRadioButton();
         //------------------------------------------------------------------
 
         //--------INITIALIZATION OF GROUP LABEL AND BUTTONGROUP------------
@@ -131,13 +144,13 @@ public class InformationGui extends JFrame
     {
         //-----------------SETTING FIRST SET OF RADIOBUTTONS---------------
         // Initialization of PikachuRadioBTn
-        JRadioButton PikachuRadio1 = new JRadioButton();
+        PikachuRadio1 = new JRadioButton();
         // Initialization of object of Charmander Radio Button.
-        JRadioButton CharmanderRadio1 = new JRadioButton();
+        CharmanderRadio1 = new JRadioButton();
         // Initialization of Eevee Radio Button
-        JRadioButton EeveeRadio1 = new JRadioButton();
+        EeveeRadio1 = new JRadioButton();
         //Initialization of Genger RadioButton
-        JRadioButton GengerRadio1 = new JRadioButton();
+        GengerRadio1 = new JRadioButton();
         //------------------------------------------------------------------
 
         //-----------------INITIALIZATION OF START BUTTON------------------
