@@ -3,7 +3,7 @@ import pokemons.*;
 
 public class Computer extends Player
 {
-    public Computer(String Pname, Pokemon P1, Pokemon P2) {
-        super(Pname, P1, P2);
+    public Computer(Pokemon P1, Pokemon P2) {
+        super("Computer", P1, P2);
     }
 }

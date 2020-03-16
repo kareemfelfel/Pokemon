@@ -2,6 +2,9 @@ package managers;
 
 import GUI.InformationGui;
 import GUI.LandingGui;
+import players.Computer;
+import players.Player;
+import players.User;
 import pokemons.*;
 
 import javax.swing.*;
@@ -10,10 +13,16 @@ import java.awt.event.ActionListener;
 
 public class Listener implements ActionListener
 {
+    //Fields
     private InformationGui InfoGui;
+    private String UserName;
     private LandingGui LandGui;
     private Pokemon Pokemon1;
     private Pokemon Pokemon2;
+    private Pokemon CompPokemon1;
+    private Pokemon CompPokemon2;
+    private Player user;
+    private Player computer;
     public Listener()
     {
 
@@ -32,8 +41,13 @@ public class Listener implements ActionListener
         if(e.getActionCommand().equals("Start"))
         {
 
-            String UserName = InfoGui.getNameField().getText();
-            CheckPokemons();
+            UserName = InfoGui.getNameField().getText();
+            Boolean ValidUserPokemons = CheckPokemons();
+            if(ValidUserPokemons)
+                SetCompPokemons();
+            user = new User(UserName, Pokemon1, Pokemon2);
+            computer = new Computer(CompPokemon1, CompPokemon2);
+
         }
         if(e.getActionCommand().equals("Next"))
         {
@@ -42,8 +56,48 @@ public class Listener implements ActionListener
         }
 
     }
+    // This function sets the computer's pokemons to be something that is different from what the user has chosen to
+    private void SetCompPokemons()
+    {
+        if(Pokemon1.getName()== "Pikachu" && Pokemon2.getName()=="Eevee" ||
+                Pokemon1.getName()== "Eevee" && Pokemon2.getName()=="Pikachu")
+        {
+            CompPokemon1 = new Genger();
+            CompPokemon2 = new Charmander();
+        }
+        else if(Pokemon1.getName()== "Pikachu" && Pokemon2.getName()=="Genger" ||
+                Pokemon1.getName()== "Genger" && Pokemon2.getName()=="Pikachu")
+        {
+            CompPokemon1 = new Eevee();
+            CompPokemon2 = new Charmander();
+        }
+        else if(Pokemon1.getName()== "Pikachu" && Pokemon2.getName()=="Charmander" ||
+                Pokemon1.getName()== "Charmander" && Pokemon2.getName()=="Pikachu")
+        {
+            CompPokemon1 = new Eevee();
+            CompPokemon2 = new Genger();
+        }
+        else if(Pokemon1.getName()== "Eevee" && Pokemon2.getName()=="Genger" ||
+                Pokemon1.getName()== "Genger" && Pokemon2.getName()=="Eevee")
+        {
+            CompPokemon1 = new Pikachu();
+            CompPokemon2 = new Charmander();
+        }
+        else if(Pokemon1.getName()== "Charmander" && Pokemon2.getName()=="Eevee" ||
+                Pokemon1.getName()== "Eevee" && Pokemon2.getName()=="Charmander")
+        {
+            CompPokemon1 = new Genger();
+            CompPokemon2 = new Pikachu();
+        }
+        else if(Pokemon1.getName()== "Charmander" && Pokemon2.getName()=="Genger" ||
+                Pokemon1.getName()== "Genger" && Pokemon2.getName()=="Charmander")
+        {
+            CompPokemon1 = new Eevee();
+            CompPokemon2 = new Pikachu();
+        }
+    }
 
-    private void CheckPokemons()
+    private Boolean CheckPokemons()
     {
         //If user enters same pokemon show error message
         if(InfoGui.getCharmanderRadio1().isSelected() && InfoGui.getCharmanderRadio2().isSelected() ||
@@ -53,6 +107,7 @@ public class Listener implements ActionListener
         {
             JOptionPane.showInternalMessageDialog(null, "Thou shall not have the same pokemon",
                     "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         //if pokemon selection is valid
         else
@@ -92,7 +147,9 @@ public class Listener implements ActionListener
             {
                 Pokemon2 = new Genger();
             }
+
         }
+        return true;
     }
 
 

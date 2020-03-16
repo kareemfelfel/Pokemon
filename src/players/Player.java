@@ -47,7 +47,7 @@ public abstract class Player
         Pokemon1 = P1;
         Pokemon2 = P2;
         CurrentPokemon = Pokemon1;
-        AddItemsToArrayList();
+        //AddItemsToArrayList();
     }
     private void AddItemsToArrayList()
     {
