@@ -1,4 +1,5 @@
 package GUI;
+import managers.Listener;
 import players.Player;
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +8,7 @@ public class InformationGui extends JFrame
 {
     private Player User;
     private String UserName;
+    private JButton Start;
     private JTextField NameField;
     private JRadioButton PikachuRadio1;
     private JRadioButton PikachuRadio2;
@@ -29,7 +31,11 @@ public class InformationGui extends JFrame
         this.setVisible(true);
     }
 
-    private void AddActionListeners() {
+    private void AddActionListeners()
+    {
+        //EventListeners
+        Listener action = new Listener(this);
+        Start.addActionListener(action);
     }
 
     private void CreateUserNameSection()
@@ -155,7 +161,7 @@ public class InformationGui extends JFrame
 
         //-----------------INITIALIZATION OF START BUTTON------------------
         //Initialization of Start Button
-        JButton Start = new JButton("Start");
+        Start = new JButton("Start");
         //Changing background of Start button to green
         Start.setBackground(new Color(40, 168, 75));
         //-----------------------------------------------------------------
@@ -228,7 +234,26 @@ public class InformationGui extends JFrame
     }
 
     private void CreateGui() {
+
+        //-------------------Look and Feel-------------------
+        this.setUndecorated(false);
+        //this.setDefaultLookAndFeelDecorated(true);
+        /**
+        try {
+            UIManager.setLookAndFeel(
+                    UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+        //---------------------------------------------------**/
         //-----------------SETTING ELEMENTS OF FRAME---------
+
         // Setting layout as null of JFrame.
         this.setLayout(null);
         //Set Size of window

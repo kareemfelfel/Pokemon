@@ -1,10 +1,8 @@
 package GUI;
-import pokemons.Pokemon;
-
+import managers.Listener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class LandingGui extends JFrame
 {
@@ -14,7 +12,7 @@ public class LandingGui extends JFrame
     //Constructor
     public LandingGui()
     {
-        setDefaultLookAndFeelDecorated(true);
+
         SetInitialGui();
         centerWindow();
         SetNext();
@@ -82,6 +80,11 @@ public class LandingGui extends JFrame
         pane.add(Box.createHorizontalGlue());
         // add the button to the panel
         pane.add(BtnNext);
+        //Add Action listener to Btn Next
+        //----------------EventListeners-----------
+        Listener action = new Listener(this);
+        BtnNext.addActionListener(action);
+        //--------------------------------------
         // add the panel to the frame
         this.add(pane, BorderLayout.SOUTH);
         this.pack();

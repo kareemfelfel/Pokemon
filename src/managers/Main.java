@@ -3,11 +3,15 @@ package managers;
 import GUI.InformationGui;
 import GUI.LandingGui;
 
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        InformationGui Info = new InformationGui();
-        LandingGui Start = new LandingGui();
+
+        JFrame Landing = new LandingGui();
+
 
     }
+
 }
