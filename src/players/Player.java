@@ -51,7 +51,7 @@ public abstract class Player
     }
     private void AddItemsToArrayList()
     {
-
+        ItemsList.add(new Hammer());
     }
 
     public void ChoosePokemon(){

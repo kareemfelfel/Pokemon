@@ -1,15 +1,20 @@
 package GUI;
+import pokemons.Pokemon;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class LandingGui extends JFrame
 {
     private JLabel title;
     private JButton BtnNext;
+
     //Constructor
     public LandingGui()
     {
+        setDefaultLookAndFeelDecorated(true);
         SetInitialGui();
         centerWindow();
         SetNext();
@@ -40,13 +45,14 @@ public class LandingGui extends JFrame
                 " that you use have a 25% chance of being a miss.</li> <li>there is a 25% chance for you to find an item after every hit</li>" +
                 "<li> your list of attacks are associated with the pokemon that you choose. Meaning, each Pokemon has its own "+
                 " attacks.</li><li>Every time you attack, the attack causes a random number of damage between a range that I have decided.</li></ul>"+
-                "<p> Below, fill out your information and click Next whenever you are ready!</p></html>";
+                "<p> Click Next to enter your information and Choose your pokemons!</p></html>";
         //add the string to the JLabel
         JLabel LabelInfo = new JLabel(INFO);
         //Set text color to white
         LabelInfo.setForeground(Color.white);
         // set the panel's layout as box layout on one line axis
-        CenterPanel.setLayout(new BoxLayout(CenterPanel, BoxLayout.PAGE_AXIS));
+        //CenterPanel.setLayout(new BoxLayout(CenterPanel, BoxLayout.PAGE_AXIS));
+        CenterPanel.setLayout(new BoxLayout(CenterPanel,BoxLayout.Y_AXIS));
         //set background color of panel to the same default color we are using
         CenterPanel.setBackground(new Color(61, 65, 71));
         //set padding for the panel
