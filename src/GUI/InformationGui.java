@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class InformationGui extends JFrame
 {
+    //Fields
     private Player User;
     private String UserName;
     private JButton Start;
@@ -18,7 +19,81 @@ public class InformationGui extends JFrame
     private JRadioButton GengerRadio2;
     private JRadioButton CharmanderRadio1;
     private JRadioButton CharmanderRadio2;
-    
+
+    //---------------------Getters and Setters----------------------
+    public JTextField getNameField() {
+        return NameField;
+    }
+
+    public void setNameField(JTextField nameField) {
+        NameField = nameField;
+    }
+
+    public JRadioButton getPikachuRadio1() {
+        return PikachuRadio1;
+    }
+
+    public void setPikachuRadio1(JRadioButton pikachuRadio1) {
+        PikachuRadio1 = pikachuRadio1;
+    }
+
+    public JRadioButton getPikachuRadio2() {
+        return PikachuRadio2;
+    }
+
+    public void setPikachuRadio2(JRadioButton pikachuRadio2) {
+        PikachuRadio2 = pikachuRadio2;
+    }
+
+    public JRadioButton getEeveeRadio1() {
+        return EeveeRadio1;
+    }
+
+    public void setEeveeRadio1(JRadioButton eeveeRadio1) {
+        EeveeRadio1 = eeveeRadio1;
+    }
+
+    public JRadioButton getEeveeRadio2() {
+        return EeveeRadio2;
+    }
+
+    public void setEeveeRadio2(JRadioButton eeveeRadio2) {
+        EeveeRadio2 = eeveeRadio2;
+    }
+
+    public JRadioButton getGengerRadio1() {
+        return GengerRadio1;
+    }
+
+    public void setGengerRadio1(JRadioButton gengerRadio1) {
+        GengerRadio1 = gengerRadio1;
+    }
+
+    public JRadioButton getGengerRadio2() {
+        return GengerRadio2;
+    }
+
+    public void setGengerRadio2(JRadioButton gengerRadio2) {
+        GengerRadio2 = gengerRadio2;
+    }
+
+    public JRadioButton getCharmanderRadio1() {
+        return CharmanderRadio1;
+    }
+
+    public void setCharmanderRadio1(JRadioButton charmanderRadio1) {
+        CharmanderRadio1 = charmanderRadio1;
+    }
+
+    public JRadioButton getCharmanderRadio2() {
+        return CharmanderRadio2;
+    }
+
+    public void setCharmanderRadio2(JRadioButton charmanderRadio2) {
+        CharmanderRadio2 = charmanderRadio2;
+    }
+    //-------------------------------------------------------------------------------
+
     public InformationGui()
     {
 
@@ -34,7 +109,8 @@ public class InformationGui extends JFrame
     private void AddActionListeners()
     {
         //EventListeners
-        Listener action = new Listener(this);
+        Listener action = new Listener();
+        action.SendInfoGui(this);
         Start.addActionListener(action);
     }
 

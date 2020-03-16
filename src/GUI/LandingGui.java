@@ -82,7 +82,8 @@ public class LandingGui extends JFrame
         pane.add(BtnNext);
         //Add Action listener to Btn Next
         //----------------EventListeners-----------
-        Listener action = new Listener(this);
+        Listener action = new Listener();
+        action.SendLandGui(this);
         BtnNext.addActionListener(action);
         //--------------------------------------
         // add the panel to the frame
