@@ -60,6 +60,8 @@ public abstract class Player
         BoostersList.add(new PepsiCherry());
         BoostersList.add(new PepsiCrystal());
         BoostersList.add(new Water());
+        BoostersList.add(new OrganicDrink());
+        BoostersList.add(new MysteriousBox());
     }
     private void AddItemsToArrayList()
     {
