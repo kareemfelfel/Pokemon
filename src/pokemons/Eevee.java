@@ -1,5 +1,6 @@
 package pokemons;
 
+
 public class Eevee extends Pokemon
 {
     public Eevee()
@@ -8,6 +9,7 @@ public class Eevee extends Pokemon
         Name= "Eevee";
         Type= "Normal";
         PictureLocation= "Pics/Eevee.png";
+        SetAttacks();
     }
     @Override
     public void SetAttacks()

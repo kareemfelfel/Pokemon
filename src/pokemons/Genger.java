@@ -8,6 +8,7 @@ public class Genger extends Pokemon
         Name= "Genger";
         Type= "Ghost";
         PictureLocation= "Pics/Genger.png";
+        SetAttacks();
     }
     @Override
     public void SetAttacks() {

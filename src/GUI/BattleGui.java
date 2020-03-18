@@ -1,13 +1,16 @@
 package GUI;
 import players.Player;
 import players.User;
+import pokemons.Attacks;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BattleGui extends JFrame
 {
-    JLabel UserPokImage, CompPokImage;
+    private JLabel UserPokImage, CompPokImage;
+    private JButton Attack1, Attack2, Attack3, Attack4;
     private Player user;
     private Player computer;
     private JLabel UserHealthLbl, CompHealthLbl;
@@ -20,10 +23,72 @@ public class BattleGui extends JFrame
         CreateGui();
         CenterWindow();
         AddImages();
-        //UpdateImages();
-        //UpdateHealth();
         AddHealthToGUI();
+        AddAttacks();
         this.setVisible(true);
+
+    }
+
+    private void AddAttacks()
+    {
+
+        //-----------GETTING THE ATTACKS AND ASSIGNING THEIR NAMES TO BUTTONS-------------
+        Attack1 = new JButton();
+        Attack2 = new JButton();
+        Attack3 = new JButton();
+        Attack4 = new JButton();
+        Attack1.setText(user.getCurrentPokemon().getAttacksList().get(0).getName());
+        Attack2.setText(user.getCurrentPokemon().getAttacksList().get(1).getName());
+        Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
+        Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
+        //--------------------------------------------------------------------------------
+
+
+
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel panel3 = new JPanel();
+
+
+
+        panel1.setBorder(BorderFactory.createTitledBorder("Attacks"));
+        panel2.setBorder(BorderFactory.createTitledBorder("Items Found"));
+        panel3.setBorder(BorderFactory.createTitledBorder("Boosters Found"));
+
+
+        BoxLayout layout1 = new BoxLayout(panel1, BoxLayout.Y_AXIS);
+        BoxLayout layout2 = new BoxLayout(panel2, BoxLayout.Y_AXIS);
+        BoxLayout layout3 = new BoxLayout(panel3, BoxLayout.Y_AXIS);
+
+
+        panel1.setLayout(layout1);
+        panel2.setLayout(layout2);
+        panel3.setLayout(layout3);
+
+        //------------SETTING BOUNDS AND CHARACTERISTICS OF BUTTONS-----------------------
+
+        Attack1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Attack2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Attack3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Attack4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Attack1.setBackground(new Color(101, 137, 170));
+        Attack2.setBackground(new Color(101, 137, 170));
+        Attack3.setBackground(new Color(101, 137, 170));
+        Attack4.setBackground(new Color(101, 137, 170));
+
+        panel1.add(Attack1);
+        panel1.add(Box.createVerticalStrut(5));
+        panel1.add(Attack2);
+        panel1.add(Box.createVerticalStrut(5));
+        panel1.add(Attack3);
+        panel1.add(Box.createVerticalStrut(5));
+        panel1.add(Attack4);
+
+        panel1.setBackground(new Color(61, 65, 71));
+        panel1.setBounds(60,250,150,150);
+
+        this.add(panel1);
+
 
     }
 

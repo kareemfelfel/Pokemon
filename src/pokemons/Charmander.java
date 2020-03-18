@@ -1,5 +1,6 @@
 package pokemons;
 
+
 public class Charmander extends Pokemon
 {
     public Charmander()
@@ -8,6 +9,7 @@ public class Charmander extends Pokemon
         Name= "Charmander";
         Type= "Fire";
         PictureLocation= "Pics/Charmander.png";
+        SetAttacks();
     }
     @Override
     public void SetAttacks() {
