@@ -11,7 +11,8 @@ public abstract class Player
     protected Pokemon Pokemon1;
     protected Pokemon Pokemon2;
     protected Pokemon CurrentPokemon;
-    public ArrayList<Weapons> ItemsList;
+    protected ArrayList<Weapons> ItemsList;
+    protected ArrayList<Boosters> BoostersList;
     protected boolean ItemIsFound;
 
     //GETTERS AND SETTERS
@@ -48,9 +49,18 @@ public abstract class Player
         Pokemon2 = P2;
         CurrentPokemon = Pokemon1;
         AddItemsToArrayList();
+        AddBoostersToArrayList();
     }
 
-
+    private void AddBoostersToArrayList()
+    {
+        BoostersList.add(new Apple());
+        BoostersList.add(new EnergyDrink());
+        BoostersList.add(new PepsiDrink());
+        BoostersList.add(new PepsiCherry());
+        BoostersList.add(new PepsiCrystal());
+        BoostersList.add(new Water());
+    }
     private void AddItemsToArrayList()
     {
         ItemsList.add(new Hammer());
