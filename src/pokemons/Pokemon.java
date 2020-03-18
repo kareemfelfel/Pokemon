@@ -10,6 +10,20 @@ public abstract class Pokemon
     protected String PictureLocation;
     protected ArrayList<Attacks> AttacksList;
 
+
+    //Getters and setters
+    public String getPictureLocation() {
+        return PictureLocation;
+    }
+
+    public void setPictureLocation(String pictureLocation) {
+        PictureLocation = pictureLocation;
+    }
+
+    public void setAttacksList(ArrayList<Attacks> attacksList) {
+        AttacksList = attacksList;
+    }
+
     //constructor
     public Pokemon()
     {

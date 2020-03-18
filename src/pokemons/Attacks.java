@@ -35,10 +35,6 @@ public class Attacks {
         Damage = (int)(Math.random() * (max - min + 1) + min);
         return Damage;
     }
-    public void decreasePowerPoints()
-    {
-        PowerPoints-=1;
-    }
     public int getPowerPoints()
     {
         return PowerPoints;

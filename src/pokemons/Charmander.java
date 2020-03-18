@@ -1,8 +1,20 @@
 package pokemons;
 
-public class Charmander extends Pokemon {
+public class Charmander extends Pokemon
+{
+    public Charmander()
+    {
+        super();
+        Name= "Charmander";
+        Type= "Fire";
+        PictureLocation= "Pics/Charmander.png";
+    }
     @Override
     public void SetAttacks() {
+        AttacksList.add(new Attacks ("Flare Blitz", 20,25, 2));
+        AttacksList.add(new Attacks ("Dragon Breath", 15,23, 2));
+        AttacksList.add(new Attacks ("Fre Spin", 10,15, 4));
+        AttacksList.add(new Attacks ("Ember", 8, 10, 8));
 
     }
 }

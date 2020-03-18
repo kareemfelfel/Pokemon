@@ -103,7 +103,11 @@ public class InformationGui extends JFrame
         CreateFirstSetofRadioButtons();
         CreateSecondSetofRadioButtons();
         AddActionListeners();
+        CreatePlayers();
         this.setVisible(true);
+    }
+
+    private void CreatePlayers() {
     }
 
     private void AddActionListeners()
@@ -313,21 +317,7 @@ public class InformationGui extends JFrame
 
         //-------------------Look and Feel-------------------
         this.setUndecorated(false);
-        //this.setDefaultLookAndFeelDecorated(true);
-        /**
-        try {
-            UIManager.setLookAndFeel(
-                    UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-        //---------------------------------------------------**/
+
         //-----------------SETTING ELEMENTS OF FRAME---------
 
         // Setting layout as null of JFrame.
