@@ -7,9 +7,10 @@ import java.awt.*;
 
 public class BattleGui extends JFrame
 {
-    ImageIcon UserPokemonPic, CompPokemonPic;
+    JLabel UserPokImage, CompPokImage;
     private Player user;
     private Player computer;
+    private JLabel UserHealthLbl, CompHealthLbl;
     public BattleGui(Player PUser, Player PComputer)
     {
         // Initialize the 2 main players on the screen
@@ -18,34 +19,99 @@ public class BattleGui extends JFrame
         //Show Gui
         CreateGui();
         CenterWindow();
-        CreateTopComponents();
+        AddImages();
+        //UpdateImages();
+        //UpdateHealth();
+        AddHealthToGUI();
         this.setVisible(true);
 
     }
 
-    private void CreateTopComponents()
+    private void UpdateImages()
     {
         //------------------------UPDATE USER POKEMON IMAGE-----------------------------------
-        UserPokemonPic = new ImageIcon(user.getCurrentPokemon().getPictureLocation());
+        ImageIcon UserPokemonPic = new ImageIcon(user.getCurrentPokemon().getPictureLocation());
         Image image = UserPokemonPic.getImage(); // transform it
         Image newimg = image.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         UserPokemonPic = new ImageIcon(newimg);
-        JLabel UserPokImage = new JLabel(UserPokemonPic);
-        UserPokImage.setBounds(20,5,100,120);
+        UserPokImage.setIcon(UserPokemonPic);
+        UserPokImage.setBounds(60,50,100,120);
         //------------------------------------------------------------------------------------
 
         //------------------------UPDATE COMPUTER POKEMON IMAGE-------------------------------
-        CompPokemonPic = new ImageIcon(computer.getCurrentPokemon().getPictureLocation());
+        ImageIcon CompPokemonPic = new ImageIcon(computer.getCurrentPokemon().getPictureLocation());
         Image image2 = CompPokemonPic.getImage(); // transform it
         Image newimg2 = image2.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         CompPokemonPic = new ImageIcon(newimg2);
-        JLabel CompPokImage = new JLabel(CompPokemonPic);
-        CompPokImage.setBounds(450,5,100,120);
+        CompPokImage.setIcon(CompPokemonPic);
+        CompPokImage.setBounds(420,50,100,120);
+        //-------------------------------------------------------------------------------------
+    }
+
+    private void AddHealthToGUI()
+    {
+
+        //---------------------ADDING THE USER HEALTH---------------
+        UserHealthLbl = new JLabel("Health: "+ user.getCurrentPokemon().getHitPoints());
+        UserHealthLbl.setForeground(Color.white);
+        UserHealthLbl.setBackground(new Color(61, 65, 71));
+        UserHealthLbl.setFont(new Font("Sans Serif", Font.BOLD, 16));
+        //------------------------------------------------------------
+
+        //--------------------UPDATING THE COMPUTER HEALTH-------------
+        CompHealthLbl = new JLabel("Health: "+ computer.getCurrentPokemon().getHitPoints());
+        CompHealthLbl.setForeground(Color.white);
+        CompHealthLbl.setBackground(new Color(61, 65, 71));
+        CompHealthLbl.setFont(new Font("Sans Serif", Font.BOLD, 16));
+        //-------------------------------------------------------------
+
+        //---------------------SETTING THE BOUNDS----------------------
+        UserHealthLbl.setBounds(60,20,100,20);
+        CompHealthLbl.setBounds(420,20,100,20);
+        //--------------------ADD LABELS TO GUI------------------------
+        this.add(CompHealthLbl);
+        this.add(UserHealthLbl);
+        //-------------------------------------------------------------
+    }
+
+    private void UpdateHealth()
+    {
+        //---------------------UPDATING THE USER HEALTH---------------
+        UserHealthLbl.setText("Health: "+ user.getCurrentPokemon().getHitPoints());
+        //------------------------------------------------------------
+
+        //--------------------UPDATING THE COMPUTER HEALTH-------------
+        CompHealthLbl.setText("Health: "+ computer.getCurrentPokemon().getHitPoints());
+
+        //-------------------------------------------------------------
+
+
+    }
+
+    private void AddImages()
+    {
+        //------------------------UPDATE USER POKEMON IMAGE-----------------------------------
+        ImageIcon UserPokemonPic = new ImageIcon(user.getCurrentPokemon().getPictureLocation());
+        Image image = UserPokemonPic.getImage(); // transform it
+        Image newimg = image.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        UserPokemonPic = new ImageIcon(newimg);
+        UserPokImage = new JLabel(UserPokemonPic);
+        UserPokImage.setBounds(60,50,100,120);
+        //------------------------------------------------------------------------------------
+
+        //------------------------UPDATE COMPUTER POKEMON IMAGE-------------------------------
+        ImageIcon CompPokemonPic = new ImageIcon(computer.getCurrentPokemon().getPictureLocation());
+        Image image2 = CompPokemonPic.getImage(); // transform it
+        Image newimg2 = image2.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        CompPokemonPic = new ImageIcon(newimg2);
+        CompPokImage = new JLabel(CompPokemonPic);
+        CompPokImage.setBounds(420,50,100,120);
         //-------------------------------------------------------------------------------------
 
         //-------------------------------ADD BOTH IMAGES TO SCREEN-----------------------------
         this.add(UserPokImage);
         this.add(CompPokImage);
+        //-------------------------------------------------------------------------------------
 
 
     }
