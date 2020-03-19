@@ -43,5 +43,13 @@ public class Attacks {
     {
         return PowerPoints;
     }
+    public boolean Missed()
+    {
+        int chance = (int)(Math.random() * (100 - min + 1) + 1);
+        if(chance >= 80)
+            return true;
+        else
+            return false;
+    }
 
 }

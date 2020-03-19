@@ -1,4 +1,6 @@
 package GUI;
+import items.Boosters;
+import items.Weapons;
 import managers.Master;
 import players.Player;
 import players.User;
@@ -20,8 +22,26 @@ public class BattleGui extends JFrame
     private Player user;
     private Player computer;
     private JLabel UserHealthLbl, CompHealthLbl;
+    private Boosters boosterFound;
+    private Weapons weaponFound;
+
 
     //-------------GETTERS AND SETTERS---------------
+    public Boosters getBoosterFound() {
+        return boosterFound;
+    }
+
+    public void setBoosterFound(Boosters boosterFound) {
+        this.boosterFound = boosterFound;
+    }
+
+    public Weapons getWeaponFound() {
+        return weaponFound;
+    }
+
+    public void setWeaponFound(Weapons weaponFound) {
+        this.weaponFound = weaponFound;
+    }
     public Player getUser() {
         return user;
     }
@@ -63,6 +83,8 @@ public class BattleGui extends JFrame
         Attack3.addActionListener(new Master(this));
         Attack4.addActionListener(new Master(this));
         SwitchBtn.addActionListener(new Master(this));
+        Item.addActionListener(new Master(this));
+        Booster.addActionListener(new Master(this));
     }
 
     public void UpdateAttacks()
@@ -94,20 +116,16 @@ public class BattleGui extends JFrame
     {
 
         //-----------GETTING THE ATTACKS AND ASSIGNING THEIR NAMES TO BUTTONS-------------
-        Item = new JButton();
-        Booster = new JButton();
         Attack1 = new JButton();
         Attack2 = new JButton();
         Attack3 = new JButton();
         Attack4 = new JButton();
-        Attack1.setText(user.getCurrentPokemon().getAttacksList().get(0).getName());
-        Attack2.setText(user.getCurrentPokemon().getAttacksList().get(1).getName());
-        Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
-        Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
+        UpdateAttacks();
         //--------------------------------------------------------------------------------
         //-----------SETTING BOOSTERS AND ITEMS FOUND-------------------------------------
         Item = new JButton();
         Booster = new JButton();
+        updateBoostersandItems();
         //--------------------------------------------------------------------------------
         //---------------------------INITIALIZE PANELS------------------------------------
         JPanel panel1 = new JPanel();
@@ -172,6 +190,35 @@ public class BattleGui extends JFrame
         this.add(panel2);
         this.add(panel3);
 
+    }
+
+    public void updateBoostersandItems() {
+
+        //If an Item is found
+        if (user.ItemFound())
+        {
+            //get that item ad set button property to same text
+            weaponFound= user.GetItem();
+            Item.setText(weaponFound.getName());
+            Item.setVisible(true);
+
+        }
+        //if not, keep button set to invisible
+        else {
+            Item.setVisible(false);
+            weaponFound = null;
+        }
+        //if a booster is found
+        if(user.BoosterIsFound())
+        {
+            boosterFound = user.getBooster();
+            Booster.setText(boosterFound.getName());
+            Booster.setVisible(true);
+        }
+        else{
+            Booster.setVisible(false);
+            boosterFound=null;
+        }
     }
 
     public void UpdateImages()

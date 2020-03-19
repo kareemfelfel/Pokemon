@@ -14,4 +14,9 @@ public class Hammer implements Weapons {
         else
             Opponent.setHitPoints(Opponent.getHitPoints() - Damage);
     }
+
+    @Override
+    public String getName() {
+        return Name;
+    }
 }

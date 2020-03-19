@@ -12,7 +12,7 @@ public abstract class Player
     protected Pokemon Pokemon2;
     protected Pokemon CurrentPokemon;
     protected ArrayList<Weapons> ItemsList;
-    protected boolean ItemIsFound;
+    protected ArrayList<Boosters> BoostersList;
 
     //GETTERS AND SETTERS
     public String getPlayerName() {
@@ -54,22 +54,24 @@ public abstract class Player
         Pokemon1 = P1;
         Pokemon2 = P2;
         CurrentPokemon = Pokemon1;
-        //AddItemsToArrayList();
+        AddItemsToArrayList();
+        AddBoosterstoArrayList();
     }
-    private void AddItemsToArrayList()
+
+    public void AddBoosterstoArrayList()
     {
+        BoostersList = new ArrayList<Boosters>();
+        BoostersList.add(new Water());
+    }
+
+    public void AddItemsToArrayList()
+    {
+        ItemsList = new ArrayList<Weapons>();
         ItemsList.add(new Hammer());
-    }
-
-    public void ChoosePokemon(){
-
-    }
-    public void ChooseItem()
-    {
-
     }
     public boolean ItemFound()
     {
+        boolean ItemIsFound;
         //Generate a random number between 0 and 100
         int RandomNum = (int)(Math.random() * (100 - 0 + 1) + 0);
         // There is a 25% chance that the player might find an Item after playing a hit
@@ -78,6 +80,26 @@ public abstract class Player
         else
             ItemIsFound = false;
         return ItemIsFound;
+    }
+    //returns a boolean value based on a random number generator that generates a number between 0 and 100
+    public boolean BoosterIsFound()
+    {
+        boolean ItemIsFound;
+        //Generate a random number between 0 and 100
+        int RandomNum = (int)(Math.random() * (100 - 0 + 1) + 0);
+        // There is a 25% chance that the player might find an Item after playing a hit
+        if (RandomNum >80)
+            ItemIsFound = true;
+        else
+            ItemIsFound = false;
+        return ItemIsFound;
+    }
+    //Returns the found item
+    public Boosters getBooster()
+    {
+        Random random = new Random();
+        Boosters Booster = BoostersList.get(random.nextInt(BoostersList.size()));
+        return Booster;
     }
     //function that returns a random Item from the list of Items
     public Weapons GetItem()
