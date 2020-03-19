@@ -37,8 +37,10 @@ public class BattleGui extends JFrame
 
     private void AddSwitchBtn()
     {
-        SwitchBtn = new JButton("Switch");
-        
+        SwitchBtn = new JButton("Switch!");
+        SwitchBtn.setBackground(new Color(99, 87, 208));
+        SwitchBtn.setBounds(260,385,100,30);
+        this.add(SwitchBtn);
     }
 
     private void AddNamesToGui() {
