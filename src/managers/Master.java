@@ -45,5 +45,21 @@ public class Master implements ActionListener {
             User.getCurrentPokemon().getAttacksList().get(3).Use(Comp.getCurrentPokemon());
             Gui.UpdateHealth();
         }
+        if(e.getActionCommand().equals("Switch!"))
+        {
+            if (User.getCurrentPokemon().equals(User.getPokemon1()))
+            {
+                User.setCurrentPokemon(User.getPokemon2());
+                Gui.UpdateHealth();
+                Gui.UpdateImages();
+            }
+            else if (User.getCurrentPokemon().equals(User.getPokemon2()))
+            {
+                User.setCurrentPokemon(User.getPokemon1());
+                Gui.UpdateHealth();
+                Gui.UpdateImages();
+            }
+
+        }
     }
 }

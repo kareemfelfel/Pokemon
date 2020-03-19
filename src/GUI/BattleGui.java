@@ -62,6 +62,7 @@ public class BattleGui extends JFrame
         Attack2.addActionListener(new Master(this));
         Attack3.addActionListener(new Master(this));
         Attack4.addActionListener(new Master(this));
+        SwitchBtn.addActionListener(new Master(this));
     }
 
     public void AddSwitchBtn()
@@ -174,7 +175,7 @@ public class BattleGui extends JFrame
         Image newimg = image.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         UserPokemonPic = new ImageIcon(newimg);
         UserPokImage.setIcon(UserPokemonPic);
-        UserPokImage.setBounds(60,50,100,120);
+        UserPokImage.setBounds(60,120,100,120);
         //------------------------------------------------------------------------------------
 
         //------------------------UPDATE COMPUTER POKEMON IMAGE-------------------------------
@@ -183,7 +184,7 @@ public class BattleGui extends JFrame
         Image newimg2 = image2.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         CompPokemonPic = new ImageIcon(newimg2);
         CompPokImage.setIcon(CompPokemonPic);
-        CompPokImage.setBounds(420,50,100,120);
+        CompPokImage.setBounds(420,120,100,120);
         //-------------------------------------------------------------------------------------
     }
 
