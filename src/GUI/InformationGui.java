@@ -107,10 +107,10 @@ public class InformationGui extends JFrame
         this.setVisible(true);
     }
 
-    private void CreatePlayers() {
+    public void CreatePlayers() {
     }
 
-    private void AddActionListeners()
+    public void AddActionListeners()
     {
         //EventListeners
         Listener action = new Listener();
@@ -118,7 +118,7 @@ public class InformationGui extends JFrame
         Start.addActionListener(action);
     }
 
-    private void CreateUserNameSection()
+    public void CreateUserNameSection()
     {
         //--------------------INITIALIZE LABEL AND TEXTFIELD-------------
         JLabel NameLbl = new JLabel("Enter your name:");
@@ -137,7 +137,7 @@ public class InformationGui extends JFrame
 
     }
 
-    private void CreateSecondSetofRadioButtons()
+    public void CreateSecondSetofRadioButtons()
     {
         //-----------------SETTING FIRST SET OF RADIOBUTTONS---------------
         // Initialization of PikachuRadioBTn
@@ -213,7 +213,7 @@ public class InformationGui extends JFrame
         //---------------------------------------------------------------------------
     }
 
-    private void CreateNorthofGui()
+    public void CreateNorthofGui()
     {
         //------------------ADDS AN IMAGE TO THE TOP OF THE GUI-------------------------------
         ImageIcon imageIcon = new ImageIcon("Pics/pokemon_logo.png");
@@ -226,7 +226,7 @@ public class InformationGui extends JFrame
         //-------------------------------------------------------------------------------------
     }
 
-    private void CreateFirstSetofRadioButtons()
+    public void CreateFirstSetofRadioButtons()
     {
         //-----------------SETTING FIRST SET OF RADIOBUTTONS---------------
         // Initialization of PikachuRadioBTn
@@ -313,7 +313,7 @@ public class InformationGui extends JFrame
         //---------------------------------------------------------------------------
     }
 
-    private void CreateGui() {
+    public void CreateGui() {
 
         //-------------------Look and Feel-------------------
         this.setUndecorated(false);

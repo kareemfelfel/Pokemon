@@ -30,10 +30,14 @@ public class Attacks {
         Name = name;
     }
 
-    public int getDamage()
+    public void Use(Pokemon Opponent)
     {
         Damage = (int)(Math.random() * (max - min + 1) + min);
-        return Damage;
+        int TemporaryHP = Opponent.getHitPoints()-Damage;
+        if (TemporaryHP>0)
+            Opponent.setHitPoints(TemporaryHP);
+        else
+            Opponent.setHitPoints(0);
     }
     public int getPowerPoints()
     {

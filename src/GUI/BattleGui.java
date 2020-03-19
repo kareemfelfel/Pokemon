@@ -1,4 +1,5 @@
 package GUI;
+import managers.Master;
 import players.Player;
 import players.User;
 import pokemons.Attacks;
@@ -6,6 +7,7 @@ import pokemons.Attacks;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BattleGui extends JFrame
@@ -18,6 +20,24 @@ public class BattleGui extends JFrame
     private Player user;
     private Player computer;
     private JLabel UserHealthLbl, CompHealthLbl;
+
+    //-------------GETTERS AND SETTERS---------------
+    public Player getUser() {
+        return user;
+    }
+
+    public void setUser(Player user) {
+        this.user = user;
+    }
+
+    public Player getComputer() {
+        return computer;
+    }
+    public void setComputer(Player computer) {
+        this.computer = computer;
+    }
+    //------------------------------------------------
+    //------------CONSTRUCTOR-------------------------
     public BattleGui(Player PUser, Player PComputer)
     {
         // Initialize the 2 main players on the screen
@@ -31,11 +51,20 @@ public class BattleGui extends JFrame
         AddNamesToGui();
         AddAttacks();
         AddSwitchBtn();
+        AddActionListeners();
         this.setVisible(true);
 
     }
+    //------------------------------------------------
+    public void AddActionListeners()
+    {
+        Attack1.addActionListener(new Master(this));
+        Attack2.addActionListener(new Master(this));
+        Attack3.addActionListener(new Master(this));
+        Attack4.addActionListener(new Master(this));
+    }
 
-    private void AddSwitchBtn()
+    public void AddSwitchBtn()
     {
         SwitchBtn = new JButton("Switch!");
         SwitchBtn.setBackground(new Color(99, 87, 208));
@@ -43,7 +72,7 @@ public class BattleGui extends JFrame
         this.add(SwitchBtn);
     }
 
-    private void AddNamesToGui() {
+    public void AddNamesToGui() {
         TitleLbl = new JLabel();
         TitleLbl.setText(user.getPlayerName()+ " Vs. Computer");
         TitleLbl.setFont(new Font("Normal", Font.BOLD, 24));
@@ -53,7 +82,7 @@ public class BattleGui extends JFrame
         this.add(TitleLbl);
     }
 
-    private void AddAttacks()
+    public void AddAttacks()
     {
 
         //-----------GETTING THE ATTACKS AND ASSIGNING THEIR NAMES TO BUTTONS-------------
@@ -137,7 +166,7 @@ public class BattleGui extends JFrame
 
     }
 
-    private void UpdateImages()
+    public void UpdateImages()
     {
         //------------------------UPDATE USER POKEMON IMAGE-----------------------------------
         ImageIcon UserPokemonPic = new ImageIcon(user.getCurrentPokemon().getPictureLocation());
@@ -158,7 +187,7 @@ public class BattleGui extends JFrame
         //-------------------------------------------------------------------------------------
     }
 
-    private void AddHealthToGUI()
+    public void AddHealthToGUI()
     {
 
         //---------------------ADDING THE USER HEALTH---------------
@@ -184,7 +213,7 @@ public class BattleGui extends JFrame
         //-------------------------------------------------------------
     }
 
-    private void UpdateHealth()
+    public void UpdateHealth()
     {
         //---------------------UPDATING THE USER HEALTH---------------
         UserHealthLbl.setText("Health: "+ user.getCurrentPokemon().getHitPoints());
@@ -198,7 +227,7 @@ public class BattleGui extends JFrame
 
     }
 
-    private void AddImages()
+    public void AddImages()
     {
         //------------------------UPDATE USER POKEMON IMAGE-----------------------------------
         ImageIcon UserPokemonPic = new ImageIcon(user.getCurrentPokemon().getPictureLocation());
@@ -226,7 +255,7 @@ public class BattleGui extends JFrame
 
     }
 
-    private void CenterWindow()
+    public void CenterWindow()
     {
         //Open in middle of screen
         Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -235,7 +264,7 @@ public class BattleGui extends JFrame
         this.setLocation(iCoordX, iCoordY);
     }
 
-    private void CreateGui()
+    public void CreateGui()
     {
         //-------------------Look and Feel-------------------
         this.setUndecorated(false);
