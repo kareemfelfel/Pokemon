@@ -65,6 +65,13 @@ public class BattleGui extends JFrame
         SwitchBtn.addActionListener(new Master(this));
     }
 
+    public void UpdateAttacks()
+    {
+        Attack1.setText(user.getCurrentPokemon().getAttacksList().get(0).getName());
+        Attack2.setText(user.getCurrentPokemon().getAttacksList().get(1).getName());
+        Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
+        Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
+    }
     public void AddSwitchBtn()
     {
         SwitchBtn = new JButton("Switch!");

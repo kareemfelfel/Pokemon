@@ -3,8 +3,6 @@ package managers;
 import GUI.BattleGui;
 import players.Player;
 import pokemons.Attacks;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -24,6 +22,8 @@ public class Master implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        //Update AttacksList
+        AttacksList = User.getCurrentPokemon().getAttacksList();
         //If any attack button is pressed
         if(e.getActionCommand().equals(AttacksList.get(0).getName()))
         {
@@ -52,12 +52,14 @@ public class Master implements ActionListener {
                 User.setCurrentPokemon(User.getPokemon2());
                 Gui.UpdateHealth();
                 Gui.UpdateImages();
+                Gui.UpdateAttacks();
             }
             else if (User.getCurrentPokemon().equals(User.getPokemon2()))
             {
                 User.setCurrentPokemon(User.getPokemon1());
                 Gui.UpdateHealth();
                 Gui.UpdateImages();
+                Gui.UpdateAttacks();
             }
 
         }
