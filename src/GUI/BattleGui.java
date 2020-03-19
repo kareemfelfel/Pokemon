@@ -4,13 +4,17 @@ import players.User;
 import pokemons.Attacks;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class BattleGui extends JFrame
 {
     private JLabel UserPokImage, CompPokImage;
+    private JButton SwitchBtn;
+    private JLabel TitleLbl;
     private JButton Attack1, Attack2, Attack3, Attack4;
+    private JButton Item, Booster;
     private Player user;
     private Player computer;
     private JLabel UserHealthLbl, CompHealthLbl;
@@ -24,15 +28,35 @@ public class BattleGui extends JFrame
         CenterWindow();
         AddImages();
         AddHealthToGUI();
+        AddNamesToGui();
         AddAttacks();
+        AddSwitchBtn();
         this.setVisible(true);
 
+    }
+
+    private void AddSwitchBtn()
+    {
+        SwitchBtn = new JButton("Switch");
+        
+    }
+
+    private void AddNamesToGui() {
+        TitleLbl = new JLabel();
+        TitleLbl.setText(user.getPlayerName()+ " Vs. Computer");
+        TitleLbl.setFont(new Font("Normal", Font.BOLD, 24));
+        TitleLbl.setForeground(Color.red);
+        TitleLbl.setBackground(new Color(61, 65, 71));
+        TitleLbl.setBounds(190,20,500,40);
+        this.add(TitleLbl);
     }
 
     private void AddAttacks()
     {
 
         //-----------GETTING THE ATTACKS AND ASSIGNING THEIR NAMES TO BUTTONS-------------
+        Item = new JButton();
+        Booster = new JButton();
         Attack1 = new JButton();
         Attack2 = new JButton();
         Attack3 = new JButton();
@@ -42,40 +66,52 @@ public class BattleGui extends JFrame
         Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
         Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
         //--------------------------------------------------------------------------------
-
-
-
+        //-----------SETTING BOOSTERS AND ITEMS FOUND-------------------------------------
+        Item = new JButton();
+        Booster = new JButton();
+        //--------------------------------------------------------------------------------
+        //---------------------------INITIALIZE PANELS------------------------------------
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
         JPanel panel3 = new JPanel();
-
-
-
-        panel1.setBorder(BorderFactory.createTitledBorder("Attacks"));
-        panel2.setBorder(BorderFactory.createTitledBorder("Items Found"));
-        panel3.setBorder(BorderFactory.createTitledBorder("Boosters Found"));
-
+        //--------------------------------------------------------------------------------
+        //-------------------------SET BORDERS FOR PANELS---------------------------------
+        panel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createTitledBorder(null, "Attack",
+                TitledBorder.LEFT, TitledBorder.TOP, new Font("times new roman",Font.PLAIN,12),
+                Color.WHITE)));
+        panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createTitledBorder(null, "Items Found",
+                TitledBorder.LEFT, TitledBorder.TOP, new Font("times new roman",Font.PLAIN,12),
+                Color.WHITE)));
+        panel3.setBorder(BorderFactory.createTitledBorder(BorderFactory.createTitledBorder(null, "Boosters Found",
+                TitledBorder.LEFT, TitledBorder.TOP, new Font("times new roman",Font.PLAIN,12),
+                Color.WHITE)));
+        //--------------------------------------------------------------------------------
+        //---------------------------CREATE BOX LAYOUTS FOR PANELS------------------------
 
         BoxLayout layout1 = new BoxLayout(panel1, BoxLayout.Y_AXIS);
         BoxLayout layout2 = new BoxLayout(panel2, BoxLayout.Y_AXIS);
         BoxLayout layout3 = new BoxLayout(panel3, BoxLayout.Y_AXIS);
-
-
         panel1.setLayout(layout1);
         panel2.setLayout(layout2);
         panel3.setLayout(layout3);
+        //---------------------------------------------------------------------------------
 
         //------------SETTING BOUNDS AND CHARACTERISTICS OF BUTTONS-----------------------
+        Booster.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Item.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Booster.setBackground(new Color(40, 168, 75));
+        Item.setBackground(new Color(40, 168, 75));
 
         Attack1.setAlignmentX(Component.CENTER_ALIGNMENT);
         Attack2.setAlignmentX(Component.CENTER_ALIGNMENT);
         Attack3.setAlignmentX(Component.CENTER_ALIGNMENT);
         Attack4.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Attack1.setBackground(new Color(101, 137, 170));
-        Attack2.setBackground(new Color(101, 137, 170));
-        Attack3.setBackground(new Color(101, 137, 170));
-        Attack4.setBackground(new Color(101, 137, 170));
-
+        Attack1.setBackground(new Color(40, 168, 75));
+        Attack2.setBackground(new Color(40, 168, 75));
+        Attack3.setBackground(new Color(40, 168, 75));
+        Attack4.setBackground(new Color(40, 168, 75));
+        //----------------------------------------------------------------------------------
+        //---------------ADDING ITEMS TO PANELS---------------------------------------------
         panel1.add(Attack1);
         panel1.add(Box.createVerticalStrut(5));
         panel1.add(Attack2);
@@ -83,12 +119,19 @@ public class BattleGui extends JFrame
         panel1.add(Attack3);
         panel1.add(Box.createVerticalStrut(5));
         panel1.add(Attack4);
-
         panel1.setBackground(new Color(61, 65, 71));
-        panel1.setBounds(60,250,150,150);
+        panel1.setBounds(30,270,160,150);
+
+        panel2.add(Item);
+        panel3.add(Booster);
+        panel2.setBackground(new Color(61, 65, 71));
+        panel2.setBounds(250,270,120,60);
+        panel3.setBackground(new Color(61, 65, 71));
+        panel3.setBounds(450,270,120,60);
 
         this.add(panel1);
-
+        this.add(panel2);
+        this.add(panel3);
 
     }
 
@@ -131,8 +174,8 @@ public class BattleGui extends JFrame
         //-------------------------------------------------------------
 
         //---------------------SETTING THE BOUNDS----------------------
-        UserHealthLbl.setBounds(60,20,100,20);
-        CompHealthLbl.setBounds(420,20,100,20);
+        UserHealthLbl.setBounds(60,90,100,20);
+        CompHealthLbl.setBounds(420,90,100,20);
         //--------------------ADD LABELS TO GUI------------------------
         this.add(CompHealthLbl);
         this.add(UserHealthLbl);
@@ -161,7 +204,7 @@ public class BattleGui extends JFrame
         Image newimg = image.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         UserPokemonPic = new ImageIcon(newimg);
         UserPokImage = new JLabel(UserPokemonPic);
-        UserPokImage.setBounds(60,50,100,120);
+        UserPokImage.setBounds(60,120,100,120);
         //------------------------------------------------------------------------------------
 
         //------------------------UPDATE COMPUTER POKEMON IMAGE-------------------------------
@@ -170,7 +213,7 @@ public class BattleGui extends JFrame
         Image newimg2 = image2.getScaledInstance(100, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         CompPokemonPic = new ImageIcon(newimg2);
         CompPokImage = new JLabel(CompPokemonPic);
-        CompPokImage.setBounds(420,50,100,120);
+        CompPokImage.setBounds(420,120,100,120);
         //-------------------------------------------------------------------------------------
 
         //-------------------------------ADD BOTH IMAGES TO SCREEN-----------------------------

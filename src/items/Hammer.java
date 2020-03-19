@@ -8,6 +8,10 @@ public class Hammer implements Weapons {
     @Override
     public void Use(Pokemon Opponent)
     {
-        Opponent.setHitPoints(Opponent.getHitPoints() - Damage);
+        int TemporaryHP = Opponent.getHitPoints()-Damage;
+        if(TemporaryHP<0)
+            Opponent.setHitPoints(0);
+        else
+            Opponent.setHitPoints(Opponent.getHitPoints() - Damage);
     }
 }

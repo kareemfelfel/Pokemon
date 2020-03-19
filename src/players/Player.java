@@ -15,6 +15,13 @@ public abstract class Player
     protected boolean ItemIsFound;
 
     //GETTERS AND SETTERS
+    public String getPlayerName() {
+        return PlayerName;
+    }
+
+    public ArrayList<Weapons> getItemsList() {
+        return ItemsList;
+    }
     public Pokemon getPokemon1() {
         return Pokemon1;
     }
