@@ -25,14 +25,16 @@ public class Computer extends Player
             setCurrentPokemon(Pokemon1);
         }
     }
-    public void Reply(Player User)
+    public String Reply(Player User)
     {
+        String Statement ="";
         //If an Item is found
         if (ItemFound())
         {
             //get that item ad set button property to same text
             Weapons weaponFound= GetItem();
             weaponFound.Use(User.getCurrentPokemon());
+            Statement = getCurrentPokemon().getName()+ " Found a " + weaponFound.getName() + " and used it on you! ";
 
         }
         //if a booster is found
@@ -40,12 +42,14 @@ public class Computer extends Player
         {
             Boosters boosterFound = getBooster();
             boosterFound.use(this);
+            Statement += getCurrentPokemon().getName()+ " Found a " + boosterFound.getName() + " and maxed its energy.";
 
         }
         // If my current pokemon's Hit Points is less than or equal to 10
         else if(getCurrentPokemon().getHitPoints()<= 10 && getCurrentPokemon().getHitPoints()!= 0)
         {
             Switch();
+            Statement = "Computer switched his pokemon to "+ getCurrentPokemon().getName();
         }
         // if anything else
         else
@@ -69,6 +73,7 @@ public class Computer extends Player
                     {
                         //Switch pokemons if we have not found any available attacks to play
                         Switch();
+                        Statement = "Computer switched his pokemon to "+ getCurrentPokemon().getName();
                         break;
                     }
                     counter +=1;
@@ -79,8 +84,10 @@ public class Computer extends Player
                     attack.Use(User.getCurrentPokemon());
                     //decrease the attack's powerpoints
                     attack.setPowerPoints();
+                    Statement = getCurrentPokemon().getName() + " used " + attack.getName() + " on you!";
                 }
             }
         }
+        return Statement;
     }
 }

@@ -26,6 +26,8 @@ public class Master implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        Statement1 ="";
+        Statement2="";
         //Update AttacksList
         AttacksList = User.getCurrentPokemon().getAttacksList();
         //If any attack button is pressed
@@ -37,6 +39,9 @@ public class Master implements ActionListener {
             {
                 //call the use function of the attack and send the opponent's pokemon
                 User.getCurrentPokemon().getAttacksList().get(0).Use(Comp.getCurrentPokemon());
+                //Declare Statement1
+                Statement1 = "Your Pokemon used "+ User.getCurrentPokemon().getAttacksList().get(0).getName() +" attack on "
+                        + Comp.getCurrentPokemon().getName();
                 //Decrease the Power Point by 1
                 User.getCurrentPokemon().getAttacksList().get(0).setPowerPoints();
                 //Update the attacks buttons
@@ -46,17 +51,19 @@ public class Master implements ActionListener {
             {
                 Statement1 = "Your attack missed the Pokemon!";
             }
-            Comp.Reply(User);
+            Statement2 = Comp.Reply(User);
             Gui.UpdateHealth();
             Gui.UpdateImages();
             Gui.updateBoostersandItems();
         }
         //if the attack is not a miss and the powerpoint of the attack is not 0
-        if(e.getActionCommand().equals(AttacksList.get(1).getName()))
+        else if(e.getActionCommand().equals(AttacksList.get(1).getName()))
         {
             if(!User.getCurrentPokemon().getAttacksList().get(1).Missed()
                     && User.getCurrentPokemon().getAttacksList().get(1).getPowerPoints()!=0) {
                 User.getCurrentPokemon().getAttacksList().get(1).Use(Comp.getCurrentPokemon());
+                Statement1 = "Your Pokemon used "+ User.getCurrentPokemon().getAttacksList().get(1).getName() +" attack on "
+                        + Comp.getCurrentPokemon().getName();
                 //Decrease the Power Point by 1
                 User.getCurrentPokemon().getAttacksList().get(1).setPowerPoints();
                 Gui.UpdateAttacks();
@@ -64,17 +71,19 @@ public class Master implements ActionListener {
             else {
                 Statement1 = "The Computer's Pokemon missed your attack!";
             }
-            Comp.Reply(User);
+            Statement2 = Comp.Reply(User);
             Gui.UpdateHealth();
             Gui.UpdateImages();
             Gui.updateBoostersandItems();
         }
         //if the attack is not a miss and the powerpoint of the attack is not 0
-        if(e.getActionCommand().equals(AttacksList.get(2).getName()))
+        else if(e.getActionCommand().equals(AttacksList.get(2).getName()))
         {
             if(!User.getCurrentPokemon().getAttacksList().get(2).Missed()
                     && User.getCurrentPokemon().getAttacksList().get(2).getPowerPoints()!=0) {
                 User.getCurrentPokemon().getAttacksList().get(2).Use(Comp.getCurrentPokemon());
+                Statement1 = "Your Pokemon used "+ User.getCurrentPokemon().getAttacksList().get(2).getName() +" attack on "
+                        + Comp.getCurrentPokemon().getName();
                 //Decrease the Power Point by 1
                 User.getCurrentPokemon().getAttacksList().get(2).setPowerPoints();
                 Gui.UpdateAttacks();
@@ -82,17 +91,19 @@ public class Master implements ActionListener {
             else {
                 Statement1 = "The Computer's Pokemon missed your attack!";
             }
-            Comp.Reply(User);
+            Statement2 = Comp.Reply(User);
             Gui.UpdateHealth();
             Gui.UpdateImages();
             Gui.updateBoostersandItems();
         }
         //if the attack is not a miss and the powerpoint of the attack is not 0
-        if(e.getActionCommand().equals(AttacksList.get(3).getName()))
+        else if(e.getActionCommand().equals(AttacksList.get(3).getName()))
         {
             if(!User.getCurrentPokemon().getAttacksList().get(3).Missed()
                     && User.getCurrentPokemon().getAttacksList().get(3).getPowerPoints()!=0) {
                 User.getCurrentPokemon().getAttacksList().get(3).Use(Comp.getCurrentPokemon());
+                Statement1 = "Your Pokemon used "+ User.getCurrentPokemon().getAttacksList().get(3).getName() +" attack on "
+                        + Comp.getCurrentPokemon().getName();
                 //Decrease the Power Point by 1
                 User.getCurrentPokemon().getAttacksList().get(3).setPowerPoints();
                 Gui.UpdateAttacks();
@@ -101,7 +112,7 @@ public class Master implements ActionListener {
             else {
                 Statement1 = "The Computer's Pokemon missed your attack!";
             }
-            Comp.Reply(User);
+            Statement2 = Comp.Reply(User);
             Gui.UpdateHealth();
             Gui.UpdateImages();
             Gui.updateBoostersandItems();
@@ -131,6 +142,8 @@ public class Master implements ActionListener {
         {
             //Use that booster
             Gui.getBoosterFound().use(User);
+            Statement1 = "Your Pokemon found a "+ Gui.getBoosterFound().getName() +" and used it. Your health is increased by "
+                    + Gui.getBoosterFound().getBonus() + " points!";
             //update health on Gui
             Gui.UpdateHealth();
             //Update boosters and Items buttons
@@ -141,12 +154,30 @@ public class Master implements ActionListener {
         {
             //use that weapon
             Gui.getWeaponFound().Use(Comp.getCurrentPokemon());
-            Comp.Reply(User);
+            Statement1 = "Your Pokemon found a "+ Gui.getWeaponFound().getName() +" and used it on " + Comp.getCurrentPokemon().getName();
+            Statement2 = Comp.Reply(User);
             Gui.UpdateImages();
             //update health on screen
             Gui.UpdateHealth();
             //updateBoosters and Items
             Gui.updateBoostersandItems();
         }
+        CompileStatements(Statement1, Statement2);
+    }
+
+    private void CompileStatements(String statement1, String statement2)
+    {
+        String STATEMENT = "";
+        if(statement1 != "" && statement2!= "")
+            STATEMENT = "<html><ul><li>"+statement1+"</li>"+"<li>"+statement2+"</li></ul></html>";
+        else if(statement1!="" && statement2=="")
+        {
+            STATEMENT = "<html><ul><li>"+statement1+"</li></ul></html>";
+        }
+        else if(statement1=="" && statement2!="")
+        {
+            STATEMENT = "<html><ul><li>"+statement2+"</li></ul></html>";
+        }
+        Gui.UpdateStatement(STATEMENT);
     }
 }

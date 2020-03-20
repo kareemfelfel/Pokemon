@@ -22,6 +22,7 @@ public class BattleGui extends JFrame
     private JButton Item, Booster;
     private Player user;
     private Computer computer;
+    private JLabel StoryStatement;
     private JLabel UserHealthLbl, CompHealthLbl;
     private Boosters boosterFound;
     private Weapons weaponFound;
@@ -74,9 +75,20 @@ public class BattleGui extends JFrame
         AddAttacks();
         AddSwitchBtn();
         AddActionListeners();
+        AddStoryStatement();
         this.setVisible(true);
 
     }
+
+    private void AddStoryStatement() {
+        StoryStatement = new JLabel();
+        StoryStatement.setForeground(Color.white);
+        StoryStatement.setBackground(new Color(61, 65, 71));
+        StoryStatement.setBounds(20,300,500,500);
+        StoryStatement.setVisible(false);
+        this.add(StoryStatement);
+    }
+
     //------------------------------------------------
     public void AddActionListeners()
     {
@@ -369,5 +381,10 @@ public class BattleGui extends JFrame
         //--------------------------------------------------------------
 
 
+    }
+    public void UpdateStatement(String Statement)
+    {
+        StoryStatement.setText(Statement);
+        StoryStatement.setVisible(true);
     }
 }

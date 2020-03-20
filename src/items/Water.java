@@ -14,6 +14,9 @@ public class Water implements Boosters {
         else
             UserPlayer.getCurrentPokemon().setHitPoints(UserPlayer.getCurrentPokemon().getHitPoints() + Bonus);
     }
+    public int getBonus() {
+        return Bonus;
+    }
 
     @Override
     public String getName() {
