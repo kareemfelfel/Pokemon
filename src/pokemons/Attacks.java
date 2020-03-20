@@ -39,6 +39,10 @@ public class Attacks {
         else
             Opponent.setHitPoints(0);
     }
+    public void setPowerPoints()
+    {
+        PowerPoints-=1;
+    }
     public int getPowerPoints()
     {
         return PowerPoints;

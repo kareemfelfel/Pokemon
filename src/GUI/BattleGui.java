@@ -91,10 +91,31 @@ public class BattleGui extends JFrame
 
     public void UpdateAttacks()
     {
-        Attack1.setText(user.getCurrentPokemon().getAttacksList().get(0).getName());
-        Attack2.setText(user.getCurrentPokemon().getAttacksList().get(1).getName());
-        Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
-        Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
+        //if an attack's power point is not equal to 0
+        if(user.getCurrentPokemon().getAttacksList().get(0).getPowerPoints()!=0) {
+            Attack1.setText(user.getCurrentPokemon().getAttacksList().get(0).getName());
+            Attack1.setVisible(true);
+        }
+        else
+            Attack1.setVisible(false);
+        if(user.getCurrentPokemon().getAttacksList().get(1).getPowerPoints()!=0) {
+            Attack2.setText(user.getCurrentPokemon().getAttacksList().get(1).getName());
+            Attack2.setVisible(true);
+        }
+        else
+            Attack2.setVisible(false);
+        if(user.getCurrentPokemon().getAttacksList().get(2).getPowerPoints()!=0) {
+            Attack3.setText(user.getCurrentPokemon().getAttacksList().get(2).getName());
+            Attack3.setVisible(true);
+        }
+        else
+            Attack3.setVisible(false);
+        if(user.getCurrentPokemon().getAttacksList().get(3).getPowerPoints()!=0) {
+            Attack4.setText(user.getCurrentPokemon().getAttacksList().get(3).getName());
+            Attack4.setVisible(true);
+        }
+        else
+            Attack4.setVisible(false);
     }
     public void AddSwitchBtn()
     {
