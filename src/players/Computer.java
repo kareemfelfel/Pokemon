@@ -49,7 +49,7 @@ public class Computer extends Player
         else if(getCurrentPokemon().getHitPoints()<= 10 && getCurrentPokemon().getHitPoints()!= 0)
         {
             Switch();
-            Statement = "Computer switched his pokemon to "+ getCurrentPokemon().getName();
+            Statement += "Computer switched his pokemon to "+ getCurrentPokemon().getName();
         }
         // if anything else
         else
@@ -73,7 +73,7 @@ public class Computer extends Player
                     {
                         //Switch pokemons if we have not found any available attacks to play
                         Switch();
-                        Statement = "Computer switched his pokemon to "+ getCurrentPokemon().getName();
+                        Statement += "Computer switched his pokemon to "+ getCurrentPokemon().getName();
                         break;
                     }
                     counter +=1;
@@ -84,7 +84,7 @@ public class Computer extends Player
                     attack.Use(User.getCurrentPokemon());
                     //decrease the attack's powerpoints
                     attack.setPowerPoints();
-                    Statement = getCurrentPokemon().getName() + " used " + attack.getName() + " on you!";
+                    Statement += getCurrentPokemon().getName() + " used " + attack.getName() + " on you!";
                 }
             }
         }
