@@ -87,6 +87,8 @@ public class Computer extends Player
                     Statement += getCurrentPokemon().getName() + " used " + attack.getName() + " on you!";
                 }
             }
+            else
+                Statement += getCurrentPokemon().getName() + "missed its attack on you!";
         }
         return Statement;
     }

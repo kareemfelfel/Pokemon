@@ -1,10 +1,13 @@
 package managers;
 
 import GUI.BattleGui;
+import GUI.InformationGui;
 import items.Boosters;
 import players.Computer;
 import players.*;
 import pokemons.Attacks;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -163,6 +166,39 @@ public class Master implements ActionListener {
             Gui.updateBoostersandItems();
         }
         CompileStatements(Statement1, Statement2);
+        CheckIfGameIsOver();
+    }
+
+    private void CheckIfGameIsOver()
+    {
+        //If User's pokemon has 0 HitPoints, the game is over
+        if(User.getCurrentPokemon().getHitPoints()==0)
+        {
+            int response = JOptionPane.showConfirmDialog(null, "You Lost! Play again?", "Game Over",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.NO_OPTION) {
+                Gui.dispose();
+            } else if (response == JOptionPane.YES_OPTION) {
+                InformationGui InfoG = new InformationGui();
+                Gui.dispose();
+            } else if (response == JOptionPane.CLOSED_OPTION) {
+                Gui.dispose();
+            }
+        }
+        //If Computer's pokemon is dead User wins!
+        else if(Comp.getCurrentPokemon().getHitPoints()==0)
+        {
+            int response = JOptionPane.showConfirmDialog(null, "You won! Play again?", "Congrats!",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.NO_OPTION) {
+                Gui.dispose();
+            } else if (response == JOptionPane.YES_OPTION) {
+                InformationGui InfoG = new InformationGui();
+                Gui.dispose();
+            } else if (response == JOptionPane.CLOSED_OPTION) {
+                Gui.dispose();
+            }
+        }
     }
 
     private void CompileStatements(String statement1, String statement2)
