@@ -28,21 +28,21 @@ public class Computer extends Player
     public String Reply(Player User)
     {
         String Statement ="";
+        //if a booster is found
+        if(BoosterIsFound() && getCurrentPokemon().getHitPoints()<100)
+        {
+            Boosters boosterFound = getBooster();
+            boosterFound.use(this);
+            Statement = getCurrentPokemon().getName()+ " Found a " + boosterFound.getName() + " and maxed its energy.";
+
+        }
         //If an Item is found
         if (ItemFound())
         {
             //get that item ad set button property to same text
             Weapons weaponFound= GetItem();
             weaponFound.Use(User.getCurrentPokemon());
-            Statement = getCurrentPokemon().getName()+ " Found a " + weaponFound.getName() + " and used it on you! ";
-
-        }
-        //if a booster is found
-        if(BoosterIsFound() && getCurrentPokemon().getHitPoints()<100)
-        {
-            Boosters boosterFound = getBooster();
-            boosterFound.use(this);
-            Statement += getCurrentPokemon().getName()+ " Found a " + boosterFound.getName() + " and maxed its energy.";
+            Statement += getCurrentPokemon().getName()+ " Found a " + weaponFound.getName() + " and used it on you! ";
 
         }
         // If my current pokemon's Hit Points is less than or equal to 10
