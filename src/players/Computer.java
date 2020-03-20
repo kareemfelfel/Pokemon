@@ -10,6 +10,21 @@ public class Computer extends Player
     public Computer(Pokemon P1, Pokemon P2) {
         super("Computer", P1, P2);
     }
+    public void Switch()
+    {
+        //If my current pokemon is the same as pokemon1
+        if(getCurrentPokemon().equals(Pokemon1))
+        {
+            // Change to pokemon2
+            setCurrentPokemon(Pokemon2);
+        }
+        // if my current pokemon is the same as pokemon2
+        else if(getCurrentPokemon().equals(Pokemon2))
+        {
+            // swap to pokemon1
+            setCurrentPokemon(Pokemon1);
+        }
+    }
     public void Reply(Player User)
     {
         //If an Item is found
@@ -21,29 +36,50 @@ public class Computer extends Player
 
         }
         //if a booster is found
-        else if(BoosterIsFound() && getCurrentPokemon().getHitPoints()<100)
+        if(BoosterIsFound() && getCurrentPokemon().getHitPoints()<100)
         {
             Boosters boosterFound = getBooster();
             boosterFound.use(this);
 
         }
+        // If my current pokemon's Hit Points is less than or equal to 10
         else if(getCurrentPokemon().getHitPoints()<= 10 && getCurrentPokemon().getHitPoints()!= 0)
         {
-            if(getCurrentPokemon().equals(Pokemon1))
-            {
-                setCurrentPokemon(Pokemon2);
-            }
-            else if(getCurrentPokemon().equals(Pokemon2))
-            {
-                setCurrentPokemon(Pokemon1);
-            }
+            Switch();
         }
+        // if anything else
         else
         {
+            //Attack if the attack is not missed
             if(!getCurrentPokemon().getAttacksList().get(0).Missed()) {
+                boolean found = false;
                 Random random = new Random();
                 Attacks attack = getCurrentPokemon().getAttacksList().get(random.nextInt(BoostersList.size()));
-                attack.Use(User.getCurrentPokemon());
+                if(attack.getPowerPoints()!=0)
+                    found = true;
+                int counter =0;
+                //if the attack's powerpoints !=0
+                while(!found)
+                {
+                    random = new Random();
+                    attack = getCurrentPokemon().getAttacksList().get(random.nextInt(BoostersList.size()));
+                    if(attack.getPowerPoints()!=0)
+                        found = true;
+                    else if(counter ==50)
+                    {
+                        //Switch pokemons if we have not found any available attacks to play
+                        Switch();
+                        break;
+                    }
+                    counter +=1;
+
+                }
+                if(found) {
+                    //attack opponent
+                    attack.Use(User.getCurrentPokemon());
+                    //decrease the attack's powerpoints
+                    attack.setPowerPoints();
+                }
             }
         }
     }
