@@ -23,7 +23,7 @@ public class Listener implements ActionListener
     private Pokemon CompPokemon1;
     private Pokemon CompPokemon2;
     private Player user;
-    private Player computer;
+    private Computer computer;
     public Listener()
     {
 

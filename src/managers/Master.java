@@ -2,7 +2,8 @@ package managers;
 
 import GUI.BattleGui;
 import items.Boosters;
-import players.Player;
+import players.Computer;
+import players.*;
 import pokemons.Attacks;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class Master implements ActionListener {
     private BattleGui Gui;
     private Player User;
-    private Player Comp;
+    private Computer Comp;
     private ArrayList<Attacks> AttacksList;
     private String Statement;
     public Master(BattleGui PGui)
@@ -34,11 +35,17 @@ public class Master implements ActionListener {
             {
                 //call the use function of the attack and send the opponent's pokemon
                 User.getCurrentPokemon().getAttacksList().get(0).Use(Comp.getCurrentPokemon());
+                Comp.Reply(User);
                 Gui.UpdateHealth();
+                Gui.UpdateImages();
                 Gui.updateBoostersandItems();
             }
             else
             {
+                Comp.Reply(User);
+                Gui.UpdateHealth();
+                Gui.UpdateImages();
+                Gui.updateBoostersandItems();
                 Statement = "Your attack missed the Pokemon!";
             }
         }
@@ -46,31 +53,52 @@ public class Master implements ActionListener {
         {
             if(!User.getCurrentPokemon().getAttacksList().get(1).Missed()) {
                 User.getCurrentPokemon().getAttacksList().get(1).Use(Comp.getCurrentPokemon());
+                Comp.Reply(User);
                 Gui.UpdateHealth();
+                Gui.UpdateImages();
                 Gui.updateBoostersandItems();
             }
-            else
-                Statement= "The Computer's Pokemon missed your attack!";
+            else {
+                Comp.Reply(User);
+                Gui.UpdateHealth();
+                Gui.UpdateImages();
+                Gui.updateBoostersandItems();
+                Statement = "The Computer's Pokemon missed your attack!";
+            }
         }
         if(e.getActionCommand().equals(AttacksList.get(2).getName()))
         {
             if(!User.getCurrentPokemon().getAttacksList().get(2).Missed()) {
                 User.getCurrentPokemon().getAttacksList().get(2).Use(Comp.getCurrentPokemon());
+                Comp.Reply(User);
                 Gui.UpdateHealth();
+                Gui.UpdateImages();
                 Gui.updateBoostersandItems();
             }
-            else
-                Statement= "The Computer's Pokemon missed your attack!";
+            else {
+                Comp.Reply(User);
+                Gui.UpdateHealth();
+                Gui.UpdateImages();
+                Gui.updateBoostersandItems();
+                Statement = "The Computer's Pokemon missed your attack!";
+            }
         }
         if(e.getActionCommand().equals(AttacksList.get(3).getName()))
         {
             if(!User.getCurrentPokemon().getAttacksList().get(3).Missed()) {
                 User.getCurrentPokemon().getAttacksList().get(3).Use(Comp.getCurrentPokemon());
+                Comp.Reply(User);
                 Gui.UpdateHealth();
+                Gui.UpdateImages();
                 Gui.updateBoostersandItems();
             }
-            else
-                Statement= "The Computer's Pokemon missed your attack!";
+            else {
+                Comp.Reply(User);
+                Gui.UpdateImages();
+                Gui.UpdateHealth();
+                Gui.updateBoostersandItems();
+                Statement = "The Computer's Pokemon missed your attack!";
+            }
         }
         if(e.getActionCommand().equals("Switch!"))
         {
@@ -107,6 +135,8 @@ public class Master implements ActionListener {
         {
             //use that weapon
             Gui.getWeaponFound().Use(Comp.getCurrentPokemon());
+            Comp.Reply(User);
+            Gui.UpdateImages();
             //update health on screen
             Gui.UpdateHealth();
             //updateBoosters and Items

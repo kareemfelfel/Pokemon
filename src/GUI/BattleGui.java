@@ -2,6 +2,7 @@ package GUI;
 import items.Boosters;
 import items.Weapons;
 import managers.Master;
+import players.Computer;
 import players.Player;
 import players.User;
 import pokemons.Attacks;
@@ -20,7 +21,7 @@ public class BattleGui extends JFrame
     private JButton Attack1, Attack2, Attack3, Attack4;
     private JButton Item, Booster;
     private Player user;
-    private Player computer;
+    private Computer computer;
     private JLabel UserHealthLbl, CompHealthLbl;
     private Boosters boosterFound;
     private Weapons weaponFound;
@@ -50,19 +51,20 @@ public class BattleGui extends JFrame
         this.user = user;
     }
 
-    public Player getComputer() {
+    public Computer getComputer() {
         return computer;
     }
-    public void setComputer(Player computer) {
+    public void setComputer(Computer computer) {
         this.computer = computer;
     }
     //------------------------------------------------
     //------------CONSTRUCTOR-------------------------
-    public BattleGui(Player PUser, Player PComputer)
+    public BattleGui(Player PUser, Computer PComputer)
     {
         // Initialize the 2 main players on the screen
         user = PUser;
         computer = PComputer;
+
         //Show Gui
         CreateGui();
         CenterWindow();
@@ -197,6 +199,7 @@ public class BattleGui extends JFrame
         //If an Item is found
         if (user.ItemFound())
         {
+
             //get that item ad set button property to same text
             weaponFound= user.GetItem();
             Item.setText(weaponFound.getName());
