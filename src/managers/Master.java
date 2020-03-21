@@ -178,11 +178,13 @@ public class Master implements ActionListener {
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION) {
                 Gui.dispose();
+                System.exit(0);
             } else if (response == JOptionPane.YES_OPTION) {
                 InformationGui InfoG = new InformationGui();
                 Gui.dispose();
             } else if (response == JOptionPane.CLOSED_OPTION) {
                 Gui.dispose();
+                System.exit(0);
             }
         }
         //If Computer's pokemon is dead User wins!
@@ -192,11 +194,13 @@ public class Master implements ActionListener {
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION) {
                 Gui.dispose();
+                System.exit(0);
             } else if (response == JOptionPane.YES_OPTION) {
                 InformationGui InfoG = new InformationGui();
                 Gui.dispose();
             } else if (response == JOptionPane.CLOSED_OPTION) {
                 Gui.dispose();
+                System.exit(0);
             }
         }
     }
