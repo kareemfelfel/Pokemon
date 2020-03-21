@@ -41,8 +41,9 @@ public class LandingGui extends JFrame
                 " this thing took us a lot of time! Anyway.. before we start, we would like to give you some information of how this works!"+
                 "</p><ul><li>you start off with 2 pokemons of your choice and you play against the computer.</li><li> The attacks" +
                 " that you use have a 25% chance of being a miss.</li> <li>there is a 25% chance for you to find an item after every hit</li>" +
-                "<li> your list of attacks are associated with the pokemon that you choose. Meaning, each Pokemon has its own "+
-                " attacks.</li><li>Every time you attack, the attack causes a random number of damage between a range that I have decided.</li></ul>"+
+                "<li> There is also a 20% chance for you to find a booster and use it to upgrade your health!</li>"+"<li> your list of attacks are associated with the pokemon that you choose. Meaning, each Pokemon has its own "+
+                " attacks.</li><li>Every time you attack, the attack causes a random number of damage between a range that I have decided.</li>"+
+                "<li> When your attack button disappear, means that you have used all power points for this particular attack.</li></ul>"+
                 "<p> Click Next to enter your information and Choose your pokemons!</p></html>";
         //add the string to the JLabel
         JLabel LabelInfo = new JLabel(INFO);
